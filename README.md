@@ -1,4 +1,4 @@
-# zkSync Element NFT competition: Google Form to Discord Channel
+# Automated zkSync NFT competition: Collect addresses in Google Form, post their NFTs in a Discord Channel
 
 `main.js` is designed to automate the process of managing and processing NFT (Non-Fungible Token) wallet addresses listed in a Google Sheet. It performs the following main tasks:
 
