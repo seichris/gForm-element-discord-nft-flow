@@ -17,10 +17,10 @@ The script can be run as a one-time operation or scheduled as a recurring task (
 ## Run locally or on a server with a cron job
 
 You need to set up
-- Google Form, and add an Apps Script to your Form Sheet. The Webhook you get from your Discord server settings.
+- Google Form, and add two Apps Scripts to your Form Sheet. The Webhook you get from your Discord server settings.
 
 ```js
-function sendImageToDiscord() {
+function sendImageToDiscordForRow(rowIndex) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   // Adjust the range to specifically include the rows and columns you're interested in to optimize performance
   var lastRow = sheet.getLastRow();
@@ -76,6 +76,38 @@ function sendImageToDiscord() {
 }
 ```
 
+and
+
+
+```js
+function onEdit(e) {
+  // Check if the edit is in the correct column range and row range
+  var editedRange = e.range;
+  var sheet = e.source.getActiveSheet();
+  var editedRow = editedRange.getRow();
+  var editedCol = editedRange.getColumn();
+  
+  // Assuming your URLs are in columns Q to Z (columns 17 to 26)
+  if (editedCol >= 17 && editedCol <= 26 && editedRow > 1) { // Skip header row
+    var status = sheet.getRange(editedRow, 16).getValue(); // Status in column P
+    if (status === "Processed") {
+      // Call your function to send images
+      sendImageToDiscordForRow(editedRow);
+    }
+  }
+}
+```
+
+Also in Apps Scripts, set up an Installable Trigger:
+1. Click on the clock icon (⏲️) in the left panel to open "Triggers."
+2. Click on "+ Add Trigger" in the bottom right corner.
+3. Choose onEdit from the "Choose which function to run" dropdown.
+4. Select "From spreadsheet" from the "Select event source" dropdown.
+5. Choose "On edit" for the event type.
+6. Optionally, adjust notifications settings to your preference.
+7. Click "Save".
+
+Set up:
 - Firebase Realtime Database
 - Firebase Storage
 - Google cloud console: Credentials 0auth. Download the json into this repo
