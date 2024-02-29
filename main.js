@@ -96,7 +96,7 @@ async function processWalletAddressesFromSheet(sheetId, range) {
         const walletAddress = row[0]; // Wallet address in column L
         const status = row[1]; // Status in column M
 
-        if (status !== "Processed" && status !== "failed - no nfts") {
+        if (status !== "Processed" && status !== "failed - no nfts" && status !== "Sent to Discord") {
           // Pass the sheetId and rowIndex to the fetchAssetsAndSaveToFirebase function
           await fetchAssetsAndSaveToFirebase(walletAddress, sheetId, index + 2); // +2 because array is 0-indexed and header row is not included
           await fetchAndProcessImages(sheetId, walletAddress); // Make sure fetchAndProcessImages can handle a single walletAddress
