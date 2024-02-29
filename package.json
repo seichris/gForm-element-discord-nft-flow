@@ -1,0 +1,26 @@
+{
+  "name": "rarible-nfts-query",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "api": "^6.1.1",
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.5",
+    "element-js-sdk": "^2.1.8",
+    "firebase": "^10.8.0",
+    "google-auth-library": "^9.6.3",
+    "googleapis": "^133.0.0",
+    "node-cron": "^3.0.3",
+    "node-fetch": "^3.3.2",
+    "puppeteer": "^22.3.0",
+    "request": "^2.88.2",
+    "sharp": "^0.33.2"
+  }
+}

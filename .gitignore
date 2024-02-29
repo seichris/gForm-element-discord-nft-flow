@@ -1,0 +1,9 @@
+node_modules
+package-lock.json
+
+.env
+rarible-credentials.json
+
+/frontend
+
+google-credentials.json
